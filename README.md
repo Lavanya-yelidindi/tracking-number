@@ -14,6 +14,8 @@ destination_country_id
 created_at
 customer_id
 
+Based on origin_country_id , destination_country_id and creted time tracking number will create.
+
 `GET https://generate-tracking-number.onrender.com/api/next-tracking-number?origin_country_id=IN&destination_country_id=MY&created_at=2024-05-20T15:30:12%2B08:00&customer_id=de619854-b59b-425e-9db4-943979e1bd49`
 
 Response:
