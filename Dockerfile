@@ -1,11 +1,13 @@
-# Use an official OpenJDK runtime as a parent image
-FROM eclipse-temurin:17-jdk
-
-# Set the working directory
+# Stage 1: Build the application
+FROM eclipse-temurin:17-jdk as build
 WORKDIR /app
+COPY . .
+RUN ./mvnw clean package -DskipTests
 
-# Copy the built jar to the container
-COPY target/tracking-number-0.0.1-SNAPSHOT.jar app.jar
+# Stage 2: Package the application
+FROM eclipse-temurin:17-jdk
+WORKDIR /app
+COPY --from=build /app/target/tracking-number-0.0.1-SNAPSHOT.jar app.jar
 
 # Expose the port your app runs on (default 8080)
 EXPOSE 8080
