@@ -50,7 +50,8 @@ set_java_home() {
       JAVACMD="$JAVA_HOME/jre/sh/java"
       JAVACCMD="$JAVA_HOME/jre/sh/javac"
     else
-      JAVACMD="$JAVA_HOME/bin/java"
+      JAVA_HOME=$(dirname "$(dirname "$(readlink -f "$(which java)")")")
+  	  JAVACMD="$JAVA_HOME/bin/java"
       JAVACCMD="$JAVA_HOME/bin/javac"
 
       if [ ! -x "$JAVACMD" ] || [ ! -x "$JAVACCMD" ]; then
