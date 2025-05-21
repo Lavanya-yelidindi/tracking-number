@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: generate-tracking-number
+    env: docker
+    plan: free
+    branch: master
+    rootDir: .
